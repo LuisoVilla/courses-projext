@@ -39,6 +39,12 @@ Start the Flask web server:
 python app.py
 ```
 
+For development mode with debug enabled:
+```bash
+export FLASK_ENV=development
+python app.py
+```
+
 The application will be available at `http://localhost:5000`
 
 ## Running Tests

@@ -104,4 +104,8 @@ def register(course_code):
 
 
 if __name__ == '__main__':
-    app.run(debug=True, port=5000)
+    # Debug mode should only be enabled in development, not production
+    # Set via environment variable: export FLASK_ENV=development
+    import os
+    debug_mode = os.environ.get('FLASK_ENV') == 'development'
+    app.run(debug=debug_mode, port=5000)

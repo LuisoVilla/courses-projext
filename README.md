@@ -1,13 +1,7 @@
-# 🎓 Course Registration System# Getting Started with Create React App
+# 🎓 Course Registration System
 
 
-
-Sistema de registro de cursos con React, Zustand, Styled Components y Mock Service Worker.This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-
-
-## 🚀 Características## Available Scripts
-
+React, Zustand, Styled Components y Mock Service Worker.This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 
 - ✅ **Login con Student ID** - Autenticación simple con ID de estudianteIn the project directory, you can run:

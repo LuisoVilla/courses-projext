@@ -1,4 +1,4 @@
-# 🎓 Course Registration System# 🎓 Course Registration System# Getting Started with Create React App
+# 🎓 Course Registration System# 🎓 
 
 
 

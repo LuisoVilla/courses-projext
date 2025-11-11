@@ -581,14 +581,39 @@ La aplicación es completamente responsive y funciona en:
 - Shimmer effect para loading states
 - Smooth transitions
 
-## 🛠️ Scripts Disponibles
+## 🛠️ Available Scripts
 
 ```bash
-npm start       # Ejecutar en desarrollo
-npm build       # Build para producción
-npm test        # Ejecutar tests
+npm start       # Run in development
+npm build       # Build for production
+npm test        # Run tests
+npm test -- --coverage  # Run tests with coverage
 ```
 
-## 📄 Licencia
+## 🧪 Testing
+
+This project includes comprehensive unit and integration tests:
+
+- **Unit Tests**: Zustand stores (auth, courses)
+- **Component Tests**: Login, Courses pages
+- **Integration Tests**: Full user flow (login → courses → register → logout)
+
+For detailed testing documentation, see [TESTING.md](./TESTING.md)
+
+### Test Coverage
+- AuthStore: Login, logout, persistence
+- CoursesStore: Data loading, registration, prerequisites
+- Login Component: Form validation, authentication
+- Courses Component: Course display, registration, logout
+- Integration: End-to-end user flows
+
+Run tests:
+```bash
+npm test                    # Run all tests
+npm test -- --watch        # Watch mode
+npm test -- --coverage     # With coverage report
+```
+
+## 📄 License
 
 Este es un proyecto de demostración educativa.

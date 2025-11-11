@@ -1,6 +1,9 @@
 import { useCoursesStore } from '../coursesStore';
 import { useAuthStore } from '../authStore';
 
+// Mock the API
+jest.mock('../../services/api');
+
 describe('CoursesStore', () => {
   beforeEach(() => {
     // Reset store state

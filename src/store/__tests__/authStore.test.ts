@@ -1,5 +1,8 @@
 import { useAuthStore } from '../authStore';
 
+// Mock the API
+jest.mock('../../services/api');
+
 describe('AuthStore', () => {
   beforeEach(() => {
     // Clear localStorage before each test

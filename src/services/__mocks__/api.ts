@@ -1,6 +1,6 @@
 import { mockData } from '../../mocks/mockData';
 
-export const login = jest.fn((username: string, password: string) => {
+const loginMock = (username: string, password: string) => {
   const student = mockData.students.find((s: any) => s.username === username && s.password === password);
   
   if (!student) {
@@ -8,25 +8,31 @@ export const login = jest.fn((username: string, password: string) => {
   }
 
   return Promise.resolve({
-    student: {
-      id: student.id,
-      username: student.username,
+    data: {
+      student: {
+        id: student.id,
+        username: student.username,
+      },
+      token: `mock-token-${student.id}-${Date.now()}`,
     },
-    token: `mock-token-${student.id}-${Date.now()}`,
   });
-});
+};
 
-export const getCurrentTerm = jest.fn(() => {
-  return Promise.resolve(mockData.currentTerm);
-});
-
-export const getCourses = jest.fn((_termId: number) => {
+const getCurrentTermMock = () => {
   return Promise.resolve({
-    courses: mockData.courses,
+    data: mockData.currentTerm,
   });
-});
+};
 
-export const getStudentRegistrations = jest.fn((studentId: string) => {
+const getCoursesMock = (_termId: number) => {
+  return Promise.resolve({
+    data: {
+      courses: mockData.courses,
+    },
+  });
+};
+
+const getStudentRegistrationsMock = (studentId: string) => {
   const student = mockData.students.find((s: any) => s.id === studentId);
   
   if (!student) {
@@ -44,11 +50,13 @@ export const getStudentRegistrations = jest.fn((studentId: string) => {
   });
 
   return Promise.resolve({
-    registrations,
+    data: {
+      registrations,
+    },
   });
-});
+};
 
-export const registerForCourse = jest.fn((_studentId: string, courseId: number, _termId: number) => {
+const registerForCourseMock = (_studentId: string, courseId: number, _termId: number) => {
   const course = mockData.courses.find((c: any) => c.id === courseId);
   
   if (!course) {
@@ -56,11 +64,28 @@ export const registerForCourse = jest.fn((_studentId: string, courseId: number, 
   }
 
   return Promise.resolve({
-    registration: {
-      id: Date.now(),
-      course,
-      term: mockData.currentTerm,
-      status: 'enrolled' as const,
+    data: {
+      registration: {
+        id: Date.now(),
+        course,
+        term: mockData.currentTerm,
+        status: 'enrolled' as const,
+      },
     },
   });
-});
+};
+
+const checkPrerequisitesMock = (_studentId: string, _courseId: number) => {
+  return true;
+};
+
+const api = {
+  login: jest.fn(loginMock),
+  getCurrentTerm: jest.fn(getCurrentTermMock),
+  getCourses: jest.fn(getCoursesMock),
+  getStudentRegistrations: jest.fn(getStudentRegistrationsMock),
+  registerForCourse: jest.fn(registerForCourseMock),
+  checkPrerequisites: jest.fn(checkPrerequisitesMock),
+};
+
+export default api;

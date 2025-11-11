@@ -27,7 +27,7 @@
   },
   "jest": {
     "transformIgnorePatterns": [
-      "node_modules/(?!(axios|zustand)/)"
+      "node_modules/(?!(axios|zustand|@remix-run|react-router|react-router-dom)/)"
     ],
     "moduleNameMapper": {
       "^axios$": "axios/dist/node/axios.cjs"

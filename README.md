@@ -1,136 +1,72 @@
 # 🎓 Course Registration System
 
+A modern course registration system built with React, TypeScript, Zustand, Styled Components, and Mock Service Worker.
 
-React, Zustand, Styled Components y Mock Service Worker.This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## 🚀 Features
 
+- ✅ **Student ID Login** - Simple authentication with student ID
+- ✅ **Course Visualization** - View available courses for next semester
+- ✅ **Prerequisites** - Prerequisite verification system
+- ✅ **Course Registration** - Register for courses if prerequisites are met
+- ✅ **Global State with Zustand** - Efficient state management
+- ✅ **Styled Components** - Modern and responsive styles
+- ✅ **Mock API with MSW** - Real HTTP requests visible in DevTools Network tab
 
-- ✅ **Login con Student ID** - Autenticación simple con ID de estudianteIn the project directory, you can run:
-
-- ✅ **Visualización de Cursos** - Ver cursos disponibles para el próximo semestre
-
-- ✅ **Prerequisitos** - Sistema de verificación de prerequisitos### `npm start`
-
-- ✅ **Registro de Cursos** - Registrarse en cursos si se cumplen los prerequisitos
-
-- ✅ **Estado Global con Zustand** - Manejo de estado eficienteRuns the app in the development mode.\
-
-- ✅ **Styled Components** - Estilos modernos y responsiveOpen [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-- ✅ **Mock API con MSW** - Peticiones HTTP reales visibles en DevTools Network
-
-The page will reload when you make changes.\
-
-## 📦 InstalaciónYou may also see any lint errors in the console.
-
-
-
-```bash### `npm test`
-
-npm install
-
-```Launches the test runner in the interactive watch mode.\
-
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-## 🏃 Ejecutar el Proyecto
-
-### `npm run build`
+## 📦 Installation
 
 ```bash
-
-npm startBuilds the app for production to the `build` folder.\
-
-```It correctly bundles React in production mode and optimizes the build for the best performance.
-
-
-
-La aplicación se abrirá en [http://localhost:3000](http://localhost:3000)The build is minified and the filenames include the hashes.\
-
-Your app is ready to be deployed!
-
-## 🔐 Credenciales de Demo
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### Usuario 1 (Completó 2 cursos)
-
-- **ID**: `student001`### `npm run eject`
-
-- **Password**: `pass123`
-
-- Cursos completados: Introduction to Programming, Data Structures**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-
-
-### Usuario 2 (Completó 1 curso)If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-- **ID**: `student002`
-
-- **Password**: `pass123`Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-- Cursos completados: Introduction to Programming
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-### Usuario 3 (Sin cursos completados)
-
-- **ID**: `student003`## Learn More
-
-- **Password**: `pass123`
-
-- Cursos completados: NingunoYou can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-
-
-## 🌐 API Endpoints (Mocked)To learn React, check out the [React documentation](https://reactjs.org/).
-
-
-
-Todas las peticiones son interceptadas por MSW y aparecen en la pestaña **Network** del DevTools.### Code Splitting
-
-
-
-### POST `/api/login`This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-**Request:**
-
-```json### Analyzing the Bundle Size
-
-{
-
-  "username": "student001",This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-  "password": "pass123"
-
-}### Making a Progressive Web App
-
+npm install
 ```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## 🏃 Run the Project
+
+```bash
+npm start
+```
+
+The application will open at [http://localhost:3000](http://localhost:3000)
+
+## 🔐 Demo Credentials
+
+### User 1 (Completed 2 courses)
+- **ID**: `student001`
+- **Password**: `pass123`
+- Completed courses: Introduction to Programming, Data Structures
+
+### User 2 (Completed 1 course)
+- **ID**: `student002`
+- **Password**: `pass123`
+- Completed courses: Introduction to Programming
+
+### User 3 (No completed courses)
+- **ID**: `student003`
+- **Password**: `pass123`
+- Completed courses: None
+
+## 🌐 API Endpoints (Mocked)
+
+All requests are intercepted by MSW and appear in the **Network** tab of DevTools.
+
+### POST `/api/login`
+
+**Request:**
+```json
+{
+  "username": "student001",
+  "password": "pass123"
+}
+```
 
 **Response (200):**
-
-```json### Advanced Configuration
-
+```json
 {
-
-  "student": {This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
+  "student": {
     "id": "001",
-
-    "username": "student001"### Deployment
-
+    "username": "student001"
   },
-
-  "token": "mock-token-001-1234567890"This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
+  "token": "mock-token-001-1234567890"
 }
-
-```### `npm run build` fails to minify
-
-
-
-### GET `/api/current_term`This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+```
 
 **Headers:**
 ```
@@ -237,49 +173,49 @@ Authorization: Bearer {token}
 }
 ```
 
-## 🏗️ Estructura del Proyecto
+## 🏗️ Project Structure
 
 ```
 src/
-├── App.tsx                    # Configuración de rutas
+├── App.tsx                    # Route configuration
 ├── index.tsx                  # Entry point + MSW setup
-├── styled.d.ts                # TypeScript declarations para styled-components
+├── styled.d.ts                # TypeScript declarations for styled-components
 ├── types/
 │   └── index.ts               # TypeScript types
 ├── mocks/
 │   ├── browser.ts             # MSW worker setup
 │   ├── handlers.ts            # API mock handlers
-│   └── mockData.ts            # Datos de prueba
+│   └── mockData.ts            # Test data
 ├── pages/
-│   ├── Courses.tsx            # Página de cursos
-│   └── Login.tsx              # Página de login
+│   ├── Courses.tsx            # Courses page
+│   └── Login.tsx              # Login page
 ├── services/
 │   └── api.ts                 # Axios API client
 ├── store/
 │   ├── authStore.ts           # Zustand auth store
 │   └── coursesStore.ts        # Zustand courses store
 └── styles/
-    ├── GlobalStyles.ts        # Estilos globales
-    └── theme.ts               # Tema de colores
+    ├── GlobalStyles.ts        # Global styles
+    └── theme.ts               # Color theme
 ```
 
-## 🎨 Tecnologías Utilizadas
+## 🎨 Technologies Used
 
-- **React 19** - Framework UI
+- **React 19** - UI Framework
 - **TypeScript** - Type Safety
-- **React Router DOM** - Navegación
+- **React Router DOM** - Navigation
 - **Zustand** - State Management
 - **Styled Components** - CSS-in-JS
 - **Axios** - HTTP Client
 - **MSW (Mock Service Worker)** - API Mocking
 - **React Scripts** - Build tooling
 
-## 🔍 Ver las Peticiones HTTP
+## 🔍 View HTTP Requests
 
-1. Abre las **Chrome DevTools** (F12)
-2. Ve a la pestaña **Network**
-3. Filtra por `api/` para ver solo las peticiones de la API
-4. Verás peticiones reales con:
+1. Open **Chrome DevTools** (F12)
+2. Go to the **Network** tab
+3. Filter by `api/` to see only API requests
+4. You'll see real requests with:
    - Request Headers (Authorization)
    - Request Payload
    - Response Data
@@ -288,29 +224,29 @@ src/
 
 ## 📱 Responsive Design
 
-La aplicación es completamente responsive y funciona en:
+The application is fully responsive and works on:
 - 📱 Mobile (320px+)
 - 📱 Tablet (768px+)
 - 💻 Desktop (1024px+)
 - 🖥️ Wide (1280px+)
 
-## 🎯 Características del Sistema
+## 🎯 System Features
 
-### Validación de Prerequisitos
-- Los cursos muestran sus prerequisitos
-- Indicadores visuales (✓/✗) para prerequisitos completados/faltantes
-- Botón de registro deshabilitado si faltan prerequisitos
+### Prerequisites Validation
+- Courses display their prerequisites
+- Visual indicators (✓/✗) for completed/missing prerequisites
+- Register button disabled if prerequisites are missing
 
-### Estados de Registro
-- **Available**: Puede registrarse (prerequisitos cumplidos)
-- **Registered**: Ya registrado en el curso
-- **Locked**: Prerequisitos incompletos
+### Registration States
+- **Available**: Can register (prerequisites met)
+- **Registered**: Already registered in the course
+- **Locked**: Incomplete prerequisites
 
-### Animaciones
-- Fade in para componentes
-- Float effect para elementos
-- Hover effects en cards
-- Shimmer effect para loading states
+### Animations
+- Fade in for components
+- Float effect for elements
+- Hover effects on cards
+- Shimmer effect for loading states
 - Smooth transitions
 
 ## 🛠️ Available Scripts
@@ -348,4 +284,4 @@ npm test -- --coverage     # With coverage report
 
 ## 📄 License
 
-Este es un proyecto de demostración educativa.
+This is an educational demonstration project.

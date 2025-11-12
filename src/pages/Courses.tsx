@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import styled, { keyframes } from 'styled-components';
 import { useAuthStore } from '../store/authStore';
 import { useCoursesStore } from '../store/coursesStore';
+import { SEO } from '../components/SEO';
 
 const LOADING_SKELETON_COUNT = 6;
 
@@ -421,6 +422,12 @@ function Courses() {
 
   return (
     <Container>
+      <SEO 
+        title="Available Courses"
+        description="Browse and register for university courses. Check prerequisites, view course details, and manage your academic schedule for next semester."
+        keywords="available courses, course catalog, prerequisites, course registration, academic planning"
+        url="https://courses-projext.vercel.app/courses"
+      />
       <Header>
         <HeaderContent>
           <Logo>

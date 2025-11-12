@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled, { keyframes } from 'styled-components';
 import { useAuthStore } from '../store/authStore';
+import { SEO } from '../components/SEO';
 
 const fadeIn = keyframes`
   from {
@@ -211,6 +212,12 @@ function Login() {
 
   return (
     <Container>
+      <SEO 
+        title="Student Login"
+        description="Sign in to access course registration system. View available courses and register for next semester."
+        keywords="student login, course registration login, university portal"
+        url="https://courses-projext.vercel.app/login"
+      />
       <LoginCard>
         <Logo>📚</Logo>
         <Title>Course Registration</Title>

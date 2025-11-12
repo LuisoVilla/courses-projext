@@ -16,6 +16,8 @@ export const GlobalStyles = createGlobalStyle`
     background: ${({ theme }) => theme.colors.background};
     color: ${({ theme }) => theme.colors.text};
     min-height: 100vh;
+    transition: background ${({ theme }) => theme.transitions.normal}, 
+                color ${({ theme }) => theme.transitions.normal};
   }
 
   code {

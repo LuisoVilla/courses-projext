@@ -1,8 +1,9 @@
 import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { ThemeProvider } from 'styled-components';
+import { HelmetProvider } from 'react-helmet-async';
 import Courses from '../Courses';
-import { theme } from '../../styles/theme';
+import { darkTheme } from '../../styles/theme';
 import { useAuthStore } from '../../store/authStore';
 import { useCoursesStore } from '../../store/coursesStore';
 import api from '../../services/api';
@@ -26,9 +27,11 @@ jest.mock('react-router-dom', () => ({
 
 const renderWithProviders = (component: React.ReactElement) => {
   return render(
-    <ThemeProvider theme={theme}>
-      {component}
-    </ThemeProvider>
+    <HelmetProvider>
+      <ThemeProvider theme={darkTheme}>
+        {component}
+      </ThemeProvider>
+    </HelmetProvider>
   );
 };
 

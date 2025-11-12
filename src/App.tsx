@@ -3,8 +3,10 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 import { ThemeProvider } from 'styled-components';
 import { HelmetProvider } from 'react-helmet-async';
 import { useAuthStore } from './store/authStore';
+import { useThemeStore } from './store/themeStore';
 import { GlobalStyles } from './styles/GlobalStyles';
-import { theme } from './styles/theme';
+import { darkTheme, lightTheme } from './styles/theme';
+import { ThemeToggle } from './components/ThemeToggle';
 import Login from './pages/Login';
 import Courses from './pages/Courses';
 
@@ -48,10 +50,14 @@ function AppRoutes() {
 }
 
 function App() {
+  const themeMode = useThemeStore((state) => state.mode);
+  const currentTheme = themeMode === 'light' ? lightTheme : darkTheme;
+
   return (
     <HelmetProvider>
-      <ThemeProvider theme={theme}>
+      <ThemeProvider theme={currentTheme}>
         <GlobalStyles />
+        <ThemeToggle />
         <Router>
           <AppRoutes />
         </Router>

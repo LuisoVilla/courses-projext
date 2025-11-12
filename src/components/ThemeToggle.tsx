@@ -26,6 +26,18 @@ const ToggleButton = styled.button`
     outline: none;
     border-color: ${({ theme }) => theme.colors.primary};
   }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
+    top: auto;
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    padding: 0;
+    justify-content: center;
+    box-shadow: ${({ theme }) => theme.shadows.lg};
+  }
 `;
 
 const ToggleThumb = styled.div<{ $isLight: boolean }>`
@@ -39,6 +51,11 @@ const ToggleThumb = styled.div<{ $isLight: boolean }>`
   transition: transform ${({ theme }) => theme.transitions.normal};
   transform: translateX(${({ $isLight }) => ($isLight ? '28px' : '0')});
   font-size: 14px;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
+    transform: translateX(0);
+    font-size: 20px;
+  }
 `;
 
 export function ThemeToggle() {

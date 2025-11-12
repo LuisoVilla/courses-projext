@@ -172,13 +172,13 @@ const CoursesGrid = styled.div`
 `;
 
 const CourseCard = styled.div<CourseCardProps>`
-  background: rgba(255, 255, 255, 0.03);
+  background: ${(props) => props.theme.colors.surface};
   border: 1px solid ${(props) =>
     props.registered
-      ? 'rgba(34, 197, 94, 0.3)'
+      ? props.theme.colors.success
       : props.canRegister
-      ? 'rgba(99, 102, 241, 0.3)'
-      : 'rgba(255, 255, 255, 0.1)'};
+      ? props.theme.colors.primary
+      : props.theme.colors.border};
   border-radius: ${(props) => props.theme.borderRadius.lg};
   padding: ${(props) => props.theme.spacing.lg};
   transition: all ${(props) => props.theme.transitions.normal};
@@ -192,10 +192,10 @@ const CourseCard = styled.div<CourseCardProps>`
     transform: translateY(-2px);
     border-color: ${(props) =>
       props.registered
-        ? 'rgba(34, 197, 94, 0.5)'
+        ? props.theme.colors.success
         : props.canRegister
-        ? 'rgba(99, 102, 241, 0.5)'
-        : 'rgba(255, 255, 255, 0.2)'};
+        ? props.theme.colors.primary
+        : props.theme.colors.border};
     box-shadow: ${(props) => props.theme.shadows.lg};
   }
 

@@ -3,16 +3,18 @@ import styled, { keyframes } from 'styled-components';
 import { useAuthStore } from '../store/authStore';
 import { useCoursesStore } from '../store/coursesStore';
 import { SEO } from '../components/SEO';
+import { PageHeader } from '../components/PageHeader';
+import {
+  Badge,
+  PageContainer,
+  ContentWrapper
+} from '../components/common';
 
 const LOADING_SKELETON_COUNT = 6;
 
 interface CourseCardProps {
   registered: boolean;
   canRegister: boolean;
-}
-
-interface PrereqBadgeProps {
-  completed: boolean;
 }
 
 interface RegisterButtonProps {
@@ -41,110 +43,6 @@ const shimmer = keyframes`
   }
   100% {
     background-position: 1000px 0;
-  }
-`;
-
-const Container = styled.div`
-  min-height: 100vh;
-  background: linear-gradient(135deg, ${({ theme }) => theme.colors.background} 0%, ${({ theme }) => theme.colors.backgroundLight} 100%);
-`;
-
-const Header = styled.header`
-  background: ${({ theme }) => theme.colors.backgroundLight};
-  border-bottom: 1px solid ${({ theme }) => theme.colors.border};
-  padding: ${({ theme }) => theme.spacing.lg} ${({ theme }) => theme.spacing.xl};
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  backdrop-filter: blur(10px);
-  background: ${({ theme }) => theme.colors.backgroundLight}ee;
-`;
-
-const HeaderContent = styled.div`
-  max-width: 1200px;
-  margin: 0 auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: ${({ theme }) => theme.spacing.md};
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-`;
-
-const Logo = styled.div`
-  display: flex;
-  align-items: center;
-  gap: ${({ theme }) => theme.spacing.md};
-  font-size: 1.5rem;
-  font-weight: bold;
-
-  span {
-    color: ${({ theme }) => theme.colors.primary};
-  }
-`;
-
-const UserInfo = styled.div`
-  display: flex;
-  align-items: center;
-  gap: ${({ theme }) => theme.spacing.lg};
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
-    width: 100%;
-    justify-content: space-between;
-  }
-`;
-
-const UserDetails = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
-    align-items: flex-start;
-  }
-`;
-
-const UserName = styled.span`
-  font-weight: 600;
-  color: ${({ theme }) => theme.colors.text};
-`;
-
-const TermBadge = styled.span`
-  font-size: 0.85rem;
-  color: ${({ theme }) => theme.colors.textSecondary};
-  background: ${({ theme }) => theme.colors.surface};
-  padding: ${({ theme }) => theme.spacing.xs} ${({ theme }) => theme.spacing.sm};
-  border-radius: ${({ theme }) => theme.borderRadius.full};
-  margin-top: ${({ theme }) => theme.spacing.xs};
-`;
-
-const LogoutButton = styled.button`
-  padding: ${({ theme }) => theme.spacing.sm} ${({ theme }) => theme.spacing.lg};
-  background: ${({ theme }) => theme.colors.surface};
-  border: 1px solid ${({ theme }) => theme.colors.border};
-  border-radius: ${({ theme }) => theme.borderRadius.md};
-  color: ${({ theme }) => theme.colors.text};
-  font-weight: 600;
-  cursor: pointer;
-  transition: all ${({ theme }) => theme.transitions.normal};
-
-  &:hover {
-    background: ${({ theme }) => theme.colors.error};
-    border-color: ${({ theme }) => theme.colors.error};
-    transform: translateY(-2px);
-  }
-`;
-
-const Main = styled.main`
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: ${({ theme }) => theme.spacing.xxl} ${({ theme }) => theme.spacing.xl};
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
-    padding: ${({ theme }) => theme.spacing.xl} ${({ theme }) => theme.spacing.md};
   }
 `;
 
@@ -257,25 +155,6 @@ const PrereqList = styled.div`
   display: flex;
   flex-wrap: wrap;
   gap: ${({ theme }) => theme.spacing.sm};
-`;
-
-const PrereqBadge = styled.span<PrereqBadgeProps>`
-  display: inline-block;
-  padding: ${(props) => props.theme.spacing.xs} ${(props) => props.theme.spacing.sm};
-  margin-right: ${(props) => props.theme.spacing.xs};
-  margin-bottom: ${(props) => props.theme.spacing.xs};
-  background: ${(props) =>
-    props.completed ? 'rgba(34, 197, 94, 0.2)' : 'rgba(239, 68, 68, 0.2)'};
-  border: 1px solid
-    ${(props) => (props.completed ? 'rgba(34, 197, 94, 0.4)' : 'rgba(239, 68, 68, 0.4)')};
-  border-radius: ${(props) => props.theme.borderRadius.full};
-  font-size: 0.875rem;
-  color: ${(props) => (props.completed ? '#4ade80' : '#f87171')};
-  transition: all ${(props) => props.theme.transitions.normal};
-
-  &:hover {
-    transform: scale(1.05);
-  }
 `;
 
 const RegisterButton = styled.button<RegisterButtonProps>`
@@ -400,50 +279,35 @@ function Courses() {
 
   if (loading) {
     return (
-      <Container>
-        <Header>
-          <HeaderContent>
-            <Logo>
-              📚 <span>Course Registration</span>
-            </Logo>
-          </HeaderContent>
-        </Header>
-        <Main>
+      <PageContainer>
+        <PageHeader showLogo />
+        <ContentWrapper>
           <Title>Available Courses</Title>
           <CoursesGrid>
             {Array.from({ length: LOADING_SKELETON_COUNT }).map((_, i) => (
               <LoadingCard key={i} />
             ))}
           </CoursesGrid>
-        </Main>
-      </Container>
+        </ContentWrapper>
+      </PageContainer>
     );
   }
 
   return (
-    <Container>
+    <PageContainer>
       <SEO 
         title="Available Courses"
         description="Browse and register for university courses. Check prerequisites, view course details, and manage your academic schedule for next semester."
         keywords="available courses, course catalog, prerequisites, course registration, academic planning"
         url="https://courses-projext.vercel.app/courses"
       />
-      <Header>
-        <HeaderContent>
-          <Logo>
-            📚 <span>Course Registration</span>
-          </Logo>
-          <UserInfo>
-            <UserDetails>
-              <UserName>{user?.username}</UserName>
-              {currentTerm && <TermBadge>{currentTerm.name}</TermBadge>}
-            </UserDetails>
-            <LogoutButton onClick={handleLogout}>Logout</LogoutButton>
-          </UserInfo>
-        </HeaderContent>
-      </Header>
+      <PageHeader 
+        user={user || undefined}
+        term={currentTerm?.name}
+        onLogout={handleLogout}
+      />
 
-      <Main>
+      <ContentWrapper>
         <Title>Available Courses</Title>
         <Subtitle>Select courses for the next semester</Subtitle>
 
@@ -478,14 +342,18 @@ function Courses() {
                       <PrereqSection>
                         <PrereqLabel>Prerequisites:</PrereqLabel>
                         <PrereqList>
-                          {course.prereqs.map((prereqId) => (
-                            <PrereqBadge
-                              key={prereqId}
-                              completed={studentCompletedCourses.includes(prereqId)}
-                            >
-                              {getCourseName(prereqId)}
-                            </PrereqBadge>
-                          ))}
+                          {course.prereqs.map((prereqId) => {
+                            const completed = studentCompletedCourses.includes(prereqId);
+                            return (
+                              <Badge
+                                key={prereqId}
+                                variant={completed ? 'success' : 'error'}
+                                size="sm"
+                              >
+                                {getCourseName(prereqId)}
+                              </Badge>
+                            );
+                          })}
                         </PrereqList>
                       </PrereqSection>
                     )}
@@ -510,8 +378,8 @@ function Courses() {
             })}
           </CoursesGrid>
         )}
-      </Main>
-    </Container>
+      </ContentWrapper>
+    </PageContainer>
   );
 }
 
